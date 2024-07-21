@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Line Animation</title>
+    <style>
+        .drawnLine {
+            stroke: black;
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body>
+    <svg width="800" height="600"></svg>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+                // Set the dimensions and margins of the graph
+        const margin = { top: 50, right: 50, bottom: 50, left: 50 },
+        width = 800 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+
+        // Append the svg object to the body of the page
+        const svg = d3.select("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Function to draw a line with animation
+       function drawLine(x1, y1, x2, y2) {
+    return new Promise((resolve) => {
+        // Create the line
+        const line = svg.append("line")
+            .attr("x1", x1)
+            .attr("y1", y1)
+            .attr("x2", x2)
+            .attr("y2", y2)
+            .attr("class", "drawnLine");
+
+        // Calculate the length of the line
+        const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+
+        // Set up the initial state of the line
+        line.attr("stroke-dasharray", length)
+            .attr("stroke-dashoffset", length)
+            .transition() // Start the transition
+            .duration(2000) // Duration of the animation in milliseconds
+            .ease(d3.easeLinear) // Easing function
+            .attr("stroke-dashoffset", 0) // Final state
+            .on("end", resolve); // Resolve the promise when the transition ends
+    });
+}
+
+        function showAlert(message) {
+            return new Promise((resolve) => {
+                alert(message);
+                resolve(); // Resolve the promise when the alert is dismissed
+            });
+        }
+        
+        // Main function to handle drawing the line and showing the alert
+        async function main() {
+            await drawLine(0, 0, 700, 0); // Wait for the line drawing to finish
+            await showAlert("hello");     // Wait for the alert to be dismissed
+            // Additional code to run after the alert
+            console.log("The alert has been dismissed and the line has been drawn.");
+        }
+        
+        // Execute the main function
+        main();
+
+    </script>
+</body>
+</html>
