@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plot with D3.js</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        /* styles.css */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .left {
+            flex: 3;
+            background-color: #f4f4f4;
+        }
+
+        .right {
+            flex: 1;
+            background-color: #f4f4f4;
+            border: 2px solid black;
+        }
+
+        .button {
+            margin: 5% 10%;
+            align-items: center;
+            width : 300px;
+            padding: 5% 10%;
+        }
+
+        .drawLine {
+            transition: 0.5s;
+        }
+
+        svg {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            margin: 2% 2% 2% 2%;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-size: 12px;
+        }
+
+        .dot {
+            fill: rgb(255, 0, 0);
+            fill-opacity: 0.7;
+            stroke: #000;
+            stroke-width: 1px;
+        }
+
+        .dot:hover {
+            fill: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="fig" class="column left">
+            <svg></svg>
+        </div>
+        <div id="panel" class="column right">
+            <!-- Panel content goes here -->
+             <button class = "button"> RESET </button>
+             <button class = "button" onclick="autoPlay()"> AUTOPLAY </button>
+             <button class = "button" onclick="stepPlay()"> STEP-PLAY</button>
+             <button class = "button"> NEXT </button>
+             <button class = "button"> PREVIOUS </button>
+             <button class = "button" onclick="clearPlot()"> CLEAR </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
