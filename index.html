@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scatter Plot with D3.js</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
         /* styles.css */
@@ -44,10 +43,6 @@
             padding: 5% 10%;
         }
 
-        .drawLine {
-            transition: 0.5s;
-        }
-
         svg {
             border: 1px solid #ccc;
             background-color: #f9f9f9;
@@ -66,14 +61,14 @@
         }
 
         .dot {
-            fill: rgb(255, 0, 0);
-            fill-opacity: 0.7;
+            fill: red;
+            fill-opacity: 1;
             stroke: #000;
             stroke-width: 1px;
         }
 
         .dot:hover {
-            fill: orange;
+            fill: yellow;
             cursor: pointer;
         }
     </style>
@@ -86,7 +81,7 @@
         </div>
         <div id="panel" class="column right">
             <!-- Panel content goes here -->
-             <button class = "button"> RESET </button>
+             <button class = "button" onclick="reset()"> RESET </button>
              <button class = "button" onclick="autoPlay()"> AUTOPLAY </button>
              <button class = "button" onclick="stepPlay()"> STEP-PLAY</button>
              <button class = "button"> NEXT </button>
