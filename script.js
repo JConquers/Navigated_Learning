@@ -1,4 +1,4 @@
-const data = [
+const data = [ // sample  data. Can also be read from .csv, .xlsx, etc
     {
       "Timeline": "Jul 18 2024 14:19:38",
       "x": 0,
